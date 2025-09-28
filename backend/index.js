@@ -11,12 +11,13 @@ app.use(cors());
 //paths
 const AdminRoute = require("./Routes/AdminRoute");
 const UserRoute = require("./Routes/UserRoute");
+const StoreOwnerRoute = require("./Routes/StoreOwnerRoute");
 
 
 //routes
 app.use("/admin",AdminRoute);
 app.use("/user",UserRoute);
-
+app.use("/store-owner",StoreOwnerRoute);
 
 
 

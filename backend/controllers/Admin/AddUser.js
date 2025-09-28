@@ -6,7 +6,7 @@ const{validatePassword,validateEmail} = require("../../validator/Validator")
 const AddUser = async (req, res) => {
     try {
         const { name, email, password, address } = req.body;
-        const role = 'STORE_OWNER';
+        const role = 'SYSTEM_ADMIN';
         if (!name || !email || !password || !address) {
             return res.status(400).json({
                 sucess: false,
