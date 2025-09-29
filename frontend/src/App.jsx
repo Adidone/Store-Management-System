@@ -8,6 +8,7 @@ import AdminDashBoard from './Components/Admin/AdminDashBoard.jsx'
 import StoreDashBoard from './Components/Store Owner/StoreDashBoard.jsx'
 import UserDashBoard from './Components/User/UserDashBoard.jsx'
 import HomePage from './Components/Home Page/HomePage.jsx'
+import LoginUser from './Components/Login And Register/LoginUser.jsx'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage/>}/>
           <Route path='/admin/dashboard' element={<AdminDashBoard/>}/>
+          <Route path='/user-login' element={<LoginUser/>}/>
         </Routes>
       </BrowserRouter>
     </>

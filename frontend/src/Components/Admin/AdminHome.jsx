@@ -5,28 +5,52 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
+
+
 const cards = [
   {
     id: 1,
     title: 'Total Users',
-    description: 'Plants are essential for all life.',
-    total:100
+    description: 'Total user registered in website',
+    total: 0
   },
   {
     id: 2,
     title: 'Total Stores',
-    description: 'Animals are a part of nature.',
-    total:50
+    description: 'total stores registeres in website',
+    total: 50
   },
   {
     id: 3,
     title: 'Total Ratings',
-    description: 'Humans depend on plants and animals for survival.',
-    total:200
+    description: 'Total ratings given by users',
+    total: 200
   },
 ];
 
 function AddHome() {
+  const[totalUser,setTotalUsers] = React.useState(0);
+  React.useEffect(() => {
+    const totalUsers = async () => {
+      try {
+        const res = await fetch("http://localhost:3333/admin/total-users");
+        const result = await res.json();
+        const{sucess,message,totalUsers} = result;
+        console.log(result);
+        if(sucess){
+          setTotalUsers(totalUsers);
+        }
+        else{
+          setTotalUsers(0);
+        }
+      }
+      catch (err) {
+        setTotalUsers(0);
+      }
+    }
+    totalUsers();
+  },[])
+
   const [selectedCard, setSelectedCard] = React.useState(0);
   return (
     <Box
@@ -59,9 +83,9 @@ function AddHome() {
               <Typography variant="body2" color="text.secondary">
                 {card.description}
               </Typography>
-                <Typography variant="h2" component="div" sx={{ mt: 2 }}>
-                    {card.total}    
-                </Typography>
+              <Typography variant="h2" component="div" sx={{ mt: 2 }}>
+                {card.id === 1 ? totalUser:totalUser }
+              </Typography>
             </CardContent>
           </CardActionArea>
         </Card>

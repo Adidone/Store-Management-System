@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Box, Button, Container, Typography, Stack } from '@mui/material';
+import {useNavigate} from "react-router-dom"
+
 export default function HomePage() {
+  const navigate = useNavigate();
   return (
     <Container component="main" maxWidth="md">
       <Box
@@ -9,7 +12,7 @@ export default function HomePage() {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          minHeight: '90vh',
+          minHeight: '90vh', // Takes up most of the viewport height
           textAlign: 'center',
         }}
       >
@@ -25,16 +28,20 @@ export default function HomePage() {
           color="text.secondary"
           sx={{ mb: 4 }}
         >
-          This is Store Rating Web Application,You can rate your favourite stores and also view ratings given by other users.
+          Your one-stop destination to find, review, and share feedback on local stores. Discover new places recommended by the community.
         </Typography>
         <Stack direction="row" spacing={2}>
           <Button
+            
             variant="outlined"
             size="large"
-          >
+          onClick={()=>{
+            navigate("/user-login")
+          }}>
             Login
           </Button>
           <Button
+            
             variant="contained"
             size="large"
           >
