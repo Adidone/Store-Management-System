@@ -20,6 +20,7 @@ const LoginUser = async (req, res) => {
             return res.status(400).json({
                 success: false,
                 message: "Invalid email or password"
+    
             });
         }
 
@@ -31,6 +32,12 @@ const LoginUser = async (req, res) => {
             });
         }
 
+        const role = await pool.query(
+            "SELECT role from users WHERE email = $1",
+            [email]
+        )
+        const setRole = role.rows[0].role;
+
         const token = jwt.sign(
             { userId: user.rows[0].id, role: user.rows[0].role },
             process.env.JWT_SECRET,
@@ -40,7 +47,8 @@ const LoginUser = async (req, res) => {
         return res.status(200).json({
             success: true,
             token: token,
-            message: "Login successful"
+            message: "Login successful",
+            roleUser:setRole
         });
     } catch (err) {
         console.error(err.message);

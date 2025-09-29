@@ -5,12 +5,12 @@ const{validatePassword,validateEmail} = require("../../validator/Validator")
 
 const AddUser = async (req, res) => {
     try {
-        const { name, email, password, address } = req.body;
-        const role = 'SYSTEM_ADMIN';
-        if (!name || !email || !password || !address) {
+        const { name, email, password, address,role } = req.body;
+        
+        if (!name || !email || !password || !address ||!role) {
             return res.status(400).json({
                 sucess: false,
-                message: "Please provide name, email, password and address"
+                message: "Please provide name, email, password,role and address"
             });
         }
         if(!validatePassword(password)) {

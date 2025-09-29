@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import MuiAppBar from '@mui/material/AppBar';
+import {useNavigate} from "react-router-dom"
 
 const AppBar = styled(MuiAppBar, {
 })(({ theme }) => ({
@@ -18,6 +19,7 @@ const AppBar = styled(MuiAppBar, {
 
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -35,6 +37,10 @@ export default function Navbar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    navigate("/");
+
   };
 
   const handleMobileMenuOpen = (event) => {

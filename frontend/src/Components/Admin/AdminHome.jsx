@@ -36,7 +36,7 @@ function AddHome() {
         const res = await fetch("http://localhost:3333/admin/total-users");
         const result = await res.json();
         const{sucess,message,totalUsers} = result;
-        console.log(result);
+        // console.log(result);
         if(sucess){
           setTotalUsers(totalUsers);
         }

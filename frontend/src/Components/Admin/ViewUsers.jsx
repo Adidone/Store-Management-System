@@ -8,44 +8,51 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
 export default function ViewUsers() {
+  const [users, setUsers] = React.useState([]);
+  React.useEffect(() => {
+    const showUsers = async () => {
+      try {
+        const res = await fetch("http://localhost:3333/admin/show-users");
+        const result = await res.json();
+        const { sucess, users } = result;
+        if (result) {
+          setUsers(users);
+          console.log(users);
+          
+        }
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    showUsers();
+  }, [])
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell align="right">name</TableCell>
+            <TableCell>name</TableCell>
             <TableCell align="right">email</TableCell>
             <TableCell align="right">address</TableCell>
-            <TableCell align="right">average rating</TableCell>
+            <TableCell align="right">role</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {users.map((user,index) => (
             <TableRow
-              key={row.name}
+              key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {user.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{user.email}</TableCell>
+              <TableCell align="right">{user.address}</TableCell>
+              <TableCell align="right">{user.role}</TableCell>
             </TableRow>
           ))}
         </TableBody>

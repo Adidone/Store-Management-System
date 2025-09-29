@@ -15,6 +15,25 @@ const AddStore = async(req, res) => {
                 message:"Please provide a valid email"
             });
         }
+        const already = await pool.query(
+            "SELECT 1 FROM users WHERE email = $1 AND role = 'STORE_OWNER'",
+            [email]
+        );
+        if(already.rows.length > 0){
+            return res.status(400).json({
+                success:false,
+                message:"Store with this email already exists"
+            });
+        }
+        const owner_valid = await pool.query(
+            "SELECT * FROM users WHERE id = $1 AND role = 'STORE_OWNER'",[owner_id]
+        );
+        if(owner_valid.rows.length === 0){
+            return res.status(400).json({   
+                success:false,
+                message:"Please provide a valid store owner id"
+            });
+        }
         const newStore = await pool.query(
             "INSERT INTO stores (name, email, address, owner_id) VALUES ($1, $2, $3, $4) RETURNING *",
             [name,email,address,owner_id]

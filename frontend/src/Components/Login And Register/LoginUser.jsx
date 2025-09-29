@@ -20,13 +20,19 @@ export default function LoginUser() {
       })
     });
     const data = await res.json(); 
-    const{sucess,message,token,roleUser} = data;
-    if(sucess){
+    const{success,message,token,roleUser} = data;
+    if(success){
         localStorage.setItem("token", token);
-        localStorage.setItem("email",email)
+        localStorage.setItem("email",email);
     }
     if(roleUser === 'SYSTEM_ADMIN'){
         navigate("/admin/dashboard")
+    }
+    if(roleUser === 'STORE_OWNER'){
+        navigate("/store/dashboard")
+    }
+    if(roleUser === 'NORMAL_USER'){
+        navigate("/user/dashboard")
     }
 
   };
