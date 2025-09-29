@@ -44,8 +44,10 @@ export default function HomePage() {
             
             variant="contained"
             size="large"
-          >
-            Sign Up
+           onClick={()=>{
+            navigate("/user-register")
+           }}>
+            REGISTER NEW USER
           </Button>
         </Stack>
       </Box>

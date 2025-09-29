@@ -9,6 +9,7 @@ import StoreDashBoard from './Components/Store Owner/StoreDashBoard.jsx'
 import UserDashBoard from './Components/User/UserDashBoard.jsx'
 import HomePage from './Components/Home Page/HomePage.jsx'
 import LoginUser from './Components/Login And Register/LoginUser.jsx'
+import RegisterUser from './Components/Login And Register/RegisterUser.jsx'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Route path='/user-login' element={<LoginUser/>}/>
           <Route path='/store/dashboard' element={<StoreDashBoard/>}/>
           <Route path='/user/dashboard' element={<UserDashBoard/>}/>
+          <Route path='/user-register' element={<RegisterUser/>}/>
         </Routes>
       </BrowserRouter>
     </>

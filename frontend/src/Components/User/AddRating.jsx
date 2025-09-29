@@ -28,7 +28,7 @@ export default function AddRating() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                user_id: userID,
+                user_id: localStorage.getItem("loginID"),
                 store_id: storeID,
                 rating_value: rating
             }),
@@ -41,7 +41,7 @@ export default function AddRating() {
             setStoreId('');
             setRating(0);
         }else{
-            alert(message);
+            alert("Rating Already Added By Same User For Same Store");
         }   
     }catch(err){
         console.log(err);
@@ -51,18 +51,14 @@ export default function AddRating() {
   return (
     <Grid container spacing={3}>
       <FormGrid size={{ xs: 12, md: 6 }}>
-        <FormLabel htmlFor="user_id" required>
+        <FormLabel htmlFor="user_id">
           User ID
         </FormLabel>
         <OutlinedInput
           id="user_id"
           name="user_id"
-          type="number"
-          placeholder="123"
-          value={userID}
-          onChange={(e) => setUserId(e.target.value)}
-
-          required
+          placeholder={localStorage.getItem("loginID")}
+          readOnly
           size="small"
         />
       </FormGrid>

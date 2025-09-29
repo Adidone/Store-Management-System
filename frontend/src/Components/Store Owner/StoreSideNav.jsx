@@ -142,55 +142,6 @@ export default function StoreSideNav() {
             </ListItemButton>
           </ListItem>
 
-          <ListItem disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={[
-                {
-                  minHeight: 48,
-                  px: 2.5,
-                },
-                open
-                  ? {
-                    justifyContent: 'initial',
-                  }
-                  : {
-                    justifyContent: 'center',
-                  },
-              ]}
-              onClick={() => { setUserRatings(false)}}
-            >
-              <ListItemIcon
-                sx={[
-                  {
-                    minWidth: 0,
-                    justifyContent: 'center',
-                  },
-                  open
-                    ? {
-                      mr: 3,
-                    }
-                    : {
-                      mr: 'auto',
-                    },
-                ]}
-              >
-                <StoreIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Total Rating"
-                sx={[
-                  open
-                    ? {
-                      opacity: 1,
-                    }
-                    : {
-                      opacity: 0,
-                    },
-                ]}
-              />
-            </ListItemButton>
-          </ListItem>
-
         </List>
         <Divider />
       </Drawer>

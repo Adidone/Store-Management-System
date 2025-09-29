@@ -26,6 +26,13 @@ export default function Navbar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const handleLogOut = () =>{
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("loginID");
+    navigate("/");
+  }
+
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -37,9 +44,7 @@ export default function Navbar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    navigate("/");
+    
 
   };
 
@@ -65,7 +70,7 @@ export default function Navbar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>LogOut</MenuItem>
+      <MenuItem onClick={handleLogOut}>LogOut</MenuItem>
     </Menu>
   );
 
