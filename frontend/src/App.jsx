@@ -5,6 +5,9 @@ import './App.css'
 import DashBoard from './Components/Admin/AdminDashBoard'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import AdminDashBoard from './Components/Admin/AdminDashBoard.jsx'
+import StoreDashBoard from './Components/Store Owner/StoreDashBoard.jsx'
+import UserDashBoard from './Components/User/UserDashBoard.jsx'
+import HomePage from './Components/Home Page/HomePage.jsx'
 
 function App() {
 
@@ -12,7 +15,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<AdminDashBoard/>}/>
+          <Route path='/' element={<HomePage/>}/>
           <Route path='/admin/dashboard' element={<AdminDashBoard/>}/>
         </Routes>
       </BrowserRouter>

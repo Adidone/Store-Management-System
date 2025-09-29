@@ -11,12 +11,12 @@ const FormGrid = styled(Grid)(() => ({
   flexDirection: 'column',
 }));
 
-export default function AddUser() {
+export default function AddStore() {
   return (
     <Grid container spacing={3}>
       <FormGrid size={{ xs: 12, md: 6 }}>
         <FormLabel htmlFor="first-name" required>
-          First name
+          Store name
         </FormLabel>
         <OutlinedInput
           id="first-name"
@@ -42,20 +42,6 @@ export default function AddUser() {
           size="small"
         />
       </FormGrid>
-      <FormGrid size={{ xs: 12, md: 6 }}>
-        <FormLabel htmlFor="first-name" required>
-          Password
-        </FormLabel>
-        <OutlinedInput
-          id="first-name"
-          name="first-name"
-          type="text"
-          placeholder="John"
-          autoComplete="first name"
-          required
-          size="small"
-        />
-      </FormGrid>
       <FormGrid size={{ xs: 12 }}>
         <FormLabel htmlFor="address1" required>
           Address line 1
@@ -70,6 +56,21 @@ export default function AddUser() {
           size="small"
         />
       </FormGrid>
+      <FormGrid size={{ xs: 12, md: 6 }}>
+        <FormLabel htmlFor="first-name" required>
+          Owner ID
+        </FormLabel>
+        <OutlinedInput
+          id="first-name"
+          name="first-name"
+          type="text"
+          placeholder="John"
+          autoComplete="first name"
+          required
+          size="small"
+        />
+      </FormGrid>
+
       <FormGrid size={{ xs: 12 }}>
         <FormControlLabel
           control={<Checkbox name="saveAddress" value="yes" />}

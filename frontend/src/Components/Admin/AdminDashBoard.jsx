@@ -1,12 +1,12 @@
 import React from 'react'
-import Sidenav from '../pages/Sidenav';
+import AdminSidenav from "./AdminSidenNav";;
 import Navbar from '../pages/Navbar';
 
 const DashBoard = () =>{
   return(
     <>
       <Navbar/>
-      <Sidenav/>
+      <AdminSidenav/>
     </>
   )
 }

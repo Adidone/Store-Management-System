@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -11,12 +12,12 @@ const FormGrid = styled(Grid)(() => ({
   flexDirection: 'column',
 }));
 
-export default function AddUser() {
+export default function AddRating() {
   return (
     <Grid container spacing={3}>
       <FormGrid size={{ xs: 12, md: 6 }}>
         <FormLabel htmlFor="first-name" required>
-          First name
+          User ID
         </FormLabel>
         <OutlinedInput
           id="first-name"
@@ -30,7 +31,7 @@ export default function AddUser() {
       </FormGrid>
       <FormGrid size={{ xs: 12, md: 6 }}>
         <FormLabel htmlFor="last-name" required>
-          email
+          Store ID
         </FormLabel>
         <OutlinedInput
           id="last-name"
@@ -42,9 +43,10 @@ export default function AddUser() {
           size="small"
         />
       </FormGrid>
+      
       <FormGrid size={{ xs: 12, md: 6 }}>
         <FormLabel htmlFor="first-name" required>
-          Password
+          Rating Value
         </FormLabel>
         <OutlinedInput
           id="first-name"
@@ -56,20 +58,7 @@ export default function AddUser() {
           size="small"
         />
       </FormGrid>
-      <FormGrid size={{ xs: 12 }}>
-        <FormLabel htmlFor="address1" required>
-          Address line 1
-        </FormLabel>
-        <OutlinedInput
-          id="address1"
-          name="address1"
-          type="address1"
-          placeholder="Street name and number"
-          autoComplete="shipping address-line1"
-          required
-          size="small"
-        />
-      </FormGrid>
+
       <FormGrid size={{ xs: 12 }}>
         <FormControlLabel
           control={<Checkbox name="saveAddress" value="yes" />}
