@@ -47,7 +47,7 @@ Follow these steps to get your development environment set up.
 
 ### ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/Adidone/Store-Rating-Sysytem.git](https://github.com/Adidone/Store-Rating-System.git)
+git clone [https://github.com/Adidone/Store-Management-Sysytem.git](https://github.com/Adidone/Store-Management-System.git)
 cd Store-Rating-Sysytem
 
 # .env (backend)
