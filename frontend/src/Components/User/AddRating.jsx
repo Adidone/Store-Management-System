@@ -34,14 +34,14 @@ export default function AddRating() {
             }),
         });
         const data = await response.json();
-        const{sucess,message}= data;
-        if(sucess){
+        const{success,message}= data;
+        if(success){
             alert("Rating added successfully");
             setUserId('');
             setStoreId('');
             setRating(0);
         }else{
-            alert("Rating Already Added By Same User For Same Store");
+            alert(message);
         }   
     }catch(err){
         console.log(err);

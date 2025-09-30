@@ -33,6 +33,10 @@ export default function Navbar() {
     navigate("/");
   }
 
+  const handlePassword = () =>{
+    navigate("/update-password");
+  }
+
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -69,7 +73,7 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handlePassword}>Profile</MenuItem>
       <MenuItem onClick={handleLogOut}>LogOut</MenuItem>
     </Menu>
   );

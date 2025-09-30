@@ -51,7 +51,7 @@ function AddHome() {
         const res = await fetch("http://localhost:3333/admin/total-ratings");
         const result = await res.json();
         const{sucess,message,totalRatings} = result;
-        console.log(result);
+        // console.log(result);
         if(result.sucess){
           setTotalRatings(totalRatings);
         }

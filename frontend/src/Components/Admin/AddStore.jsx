@@ -47,8 +47,8 @@ export default function AddUser() {
         });
         const data = await response.json();
         console.log(data);
-        if(data.sucess){
-            alert("User added successfully");
+        if(data.success){
+            alert("Store added successfully");
             setName('');
             setEmail('');
             setAddress('');
@@ -58,7 +58,7 @@ export default function AddUser() {
         }
     }catch(err){
         console.log(err);
-        alert("Error adding user");
+        alert("Error adding Store");
     } 
   }
 

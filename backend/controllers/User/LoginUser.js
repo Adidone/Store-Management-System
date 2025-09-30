@@ -16,6 +16,7 @@ const LoginUser = async (req, res) => {
             "SELECT * FROM users WHERE email = $1",
             [email]
         );
+        // console.log(user.rows[0]);
         if (user.rows.length === 0) {
             return res.status(400).json({
                 success: false,
@@ -32,11 +33,13 @@ const LoginUser = async (req, res) => {
             });
         }
 
+
         const role = await pool.query(
             "SELECT role from users WHERE email = $1",
             [email]
         )
         const setRole = role.rows[0].role;
+
 
         const token = jwt.sign(
             { userId: user.rows[0].id, role: user.rows[0].role },
@@ -48,7 +51,8 @@ const LoginUser = async (req, res) => {
             success: true,
             token: token,
             message: "Login successful",
-            roleUser:setRole
+            roleUser:setRole,
+            loginID:user.rows[0].id
         });
     } catch (err) {
         console.error(err.message);

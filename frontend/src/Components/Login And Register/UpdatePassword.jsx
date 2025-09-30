@@ -2,43 +2,34 @@ import * as React from 'react';
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 
-export default function LoginUser() {
+export default function UpdatePassword() {
   const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [oldpassword, setPldPassword] = React.useState('');
+  const [newpassword, setNewPassword] = React.useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async(event) => {
     event.preventDefault(); 
-    const res = await fetch("http://localhost:3333/user/login", {
+    const res = await fetch("http://localhost:3333/admin/update-password", {
       method: "POST",
       headers: {  
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
         email: email,
-        password: password
+        old_password: oldpassword,
+        new_password: newpassword,
       })
     });
     const data = await res.json(); 
-    const{success,message,token,roleUser,loginID} = data;
-    if(success){
-        alert("Login Successful");
-        localStorage.setItem("token", token);
-        localStorage.setItem("email",email);
-        localStorage.setItem("loginID",loginID);
+    if(data.success){
+        console.log(data);
+        alert("Password updated successfully");
+        navigate("/user-login");
     }
     else{
-        alert(message);
+        alert(data.message);
         return;
-    }
-    if(roleUser === 'SYSTEM_ADMIN'){
-        navigate("/admin/dashboard")
-    }
-    if(roleUser === 'STORE_OWNER'){
-        navigate("/store/dashboard")
-    }
-    if(roleUser === 'NORMAL_USER'){
-        navigate("/user/dashboard")
     }
 
   };
@@ -73,13 +64,23 @@ export default function LoginUser() {
             margin="normal"
             required
             fullWidth
-            name="password"
-            label="Password"
+            name="old-password"
+            label="old-password"
             type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            id="old-password"
+            value={oldpassword}
+            onChange={(e) => setPldPassword(e.target.value)}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="new-password"
+            label="new-password"
+            type="password"
+            id="new-password"
+            value={newpassword}
+            onChange={(e) => setNewPassword(e.target.value)}
           />
           <Button
             type="submit"

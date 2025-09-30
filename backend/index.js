@@ -17,7 +17,7 @@ const StoreOwnerRoute = require("./Routes/StoreOwnerRoute");
 //routes
 app.use("/admin",AdminRoute);
 app.use("/user",UserRoute);
-app.use("/store-owner",StoreOwnerRoute);
+app.use("/store",StoreOwnerRoute);
 
 
 

@@ -10,6 +10,7 @@ import UserDashBoard from './Components/User/UserDashBoard.jsx'
 import HomePage from './Components/Home Page/HomePage.jsx'
 import LoginUser from './Components/Login And Register/LoginUser.jsx'
 import RegisterUser from './Components/Login And Register/RegisterUser.jsx'
+import UpdatePassword from './Components/Login And Register/UpdatePassword.jsx'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/store/dashboard' element={<StoreDashBoard/>}/>
           <Route path='/user/dashboard' element={<UserDashBoard/>}/>
           <Route path='/user-register' element={<RegisterUser/>}/>
+          <Route path='/update-password' element={<UpdatePassword/>}/>
         </Routes>
       </BrowserRouter>
     </>
